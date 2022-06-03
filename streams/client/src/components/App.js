@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Header";
 import StreamCreate from "./streams/StreamCreate";
 import StreamDelete from "./streams/StreamDelete";
@@ -9,6 +10,8 @@ import StreamList from "./streams/StrimList";
 const App = () => {
   return (
     <div className="ui container">
+      {/* <GoogleOAuthProvider clientId="7835632785-unq4m2g4v7fc4ml0lau7pnjlt6m0qb4j.apps.googleusercontent.com"> */}
+      {/* </GoogleOAuthProvider> */}
       <Router>
         <Header />
         <Routes>

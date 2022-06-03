@@ -1,5 +1,6 @@
 import React from "react";
-
+import { connect } from "react-redux";
+import { singIn, singOut } from "../actions";
 class GoogleAuth extends React.Component {
   state = { isSignedIn: null };
   // we use "componentDidMount" for sending request to google
@@ -10,23 +11,50 @@ class GoogleAuth extends React.Component {
         .init({
           clientId:
             "7835632785-unq4m2g4v7fc4ml0lau7pnjlt6m0qb4j.apps.googleusercontent.com",
+          plugin_name: "chat",
           scope: "email", // it means that we just need to access the user email and we also ca n use another parameters
         })
         .then(() => {
-          console.log(window.gapi.auth2.getAuthInstance());
           this.auth = window.gapi.auth2.getAuthInstance(); //with this definition we can use user status more comfortable
           this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+          this.auth.isSignedIn.listen(this.onAuthChange);
         });
     }); // this request, respond a promise and we use .then to handle it
   }
 
+  onAuthChange = (isSignedIn) => {
+    // this.setState({ isSignedIn: this.auth.isSignedIn.get() });
+    if (isSignedIn) {
+      this.props.singIn();
+    } else {
+      this.props.signOut();
+    }
+  };
+
+  onSingInClick = () => {
+    this.auth.signIn();
+  };
+  onSingOutClick = () => {
+    this.auth.signOut();
+  };
+
   renderAuthButton() {
     if (this.state.isSignedIn === null) {
-      <div>I dont know if we are singed in</div>;
+      return null;
     } else if (this.state.isSignedIn) {
-      <div>I'm singed in</div>;
+      return (
+        <button onClick={this.onSingOutClick} className="ui red google button">
+          <i className="google icon" />
+          Sing Out
+        </button>
+      );
     } else {
-      <div>I'm not singed in</div>;
+      return (
+        <button onClick={this.onSingInClick} className="ui red google button">
+          <i className="google icon" />
+          Sing In with Google
+        </button>
+      );
     }
   }
 
@@ -35,4 +63,4 @@ class GoogleAuth extends React.Component {
   }
 }
 
-export default GoogleAuth;
+export default connect(null, { singIn, singOut })(GoogleAuth);
