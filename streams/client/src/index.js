@@ -2,10 +2,14 @@ import React from "react";
 import ReactDom from "react-dom";
 import App from "./components/App";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import reducers from "./reducers";
 
-const store = createStore(reducers);
+// redux toolkit installation: https://github.com/reduxjs/redux-devtools/tree/main/extension#installation
+// we can use after local host "?debug_session=anyString"
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const store = createStore(reducers, composeEnhancers(applyMiddleware()));
 
 ReactDom.render(
   <Provider store={store}>
