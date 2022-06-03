@@ -1,12 +1,12 @@
-import { SING_IN, SING_OUT } from "./types";
+import { SIGN_IN, SIGN_OUT } from "./types";
 
-export const singIn = () => {
+export const signIn = () => {
   return {
-    type: SING_IN,
+    type: SIGN_IN,
   };
 };
-export const singOut = () => {
+export const signOut = () => {
   return {
-    type: SING_OUT,
+    type: SIGN_OUT,
   };
 };

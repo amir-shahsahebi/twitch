@@ -1,14 +1,14 @@
-import { SING_IN, SING_OUT } from "../actions/types";
+import { SIGN_IN, SIGN_OUT } from "../actions/types";
 
 const INITIAL_STATE = {
-  isSingedIN: null,
+  isSignedIn: null,
 };
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case SING_IN:
-      return { ...state, isSingedIN: true };
-    case SING_OUT:
-      return { ...state, isSingedIN: false };
+    case SIGN_IN:
+      return { ...state, isSignedIn: true };
+    case SIGN_OUT:
+      return { ...state, isSignedIn: false };
     default:
       return state;
   }
