@@ -1,6 +1,9 @@
 import React from "react";
 // for installing redux-form use: npm install redux-form --legacy-peer-deps
 import { Field, reduxForm } from "redux-form";
+import { connect } from "react-redux";
+import { createStream } from "../../actions";
+
 class StreamCreate extends React.Component {
   renderedError({ error, touched }) {
     if (touched && error) {
@@ -28,9 +31,9 @@ class StreamCreate extends React.Component {
       // />
     );
   };
-  onSubmit(formValues) {
-    console.log(formValues);
-  }
+  onSubmit = (formValues) => {
+    this.props.createStream(formValues);
+  };
   render() {
     return (
       <form
@@ -61,7 +64,9 @@ const validate = (formValues) => {
   return error;
 };
 
-export default reduxForm({
+const formWrapped = reduxForm({
   form: "streamCreate",
   validate,
 })(StreamCreate);
+
+export default connect(null, { createStream })(formWrapped);
