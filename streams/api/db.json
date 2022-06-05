@@ -4,6 +4,17 @@
       "title": "hi",
       "description": "hellllo",
       "id": 1
+    },
+    {
+      "title": "new Stream",
+      "description": "I put User ID to this stream",
+      "id": 2
+    },
+    {
+      "title": "second ",
+      "description": "id fixed",
+      "userId": "102607948428994581719",
+      "id": 3
     }
   ]
 }
