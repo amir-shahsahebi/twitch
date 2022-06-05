@@ -1,5 +1,6 @@
-import { formValues } from "redux-form";
+import history from "history/browser";
 import streams from "../apis/streams";
+
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -29,6 +30,7 @@ export const createStream = (formValues) => async (dispatch, getState) => {
     type: CREATE_STREAM,
     payload: response.data,
   });
+  history.back();
 };
 
 export const fetchStreams = () => async (dispatch) => {
