@@ -31,10 +31,12 @@ class StreamForm extends React.Component {
   };
 
   onSubmit = (formValues) => {
+    // console.log(formValues);
     this.props.onSubmit(formValues);
   };
 
   render() {
+    // "initialValues" is a key name that redux form set it as initial value for input forms
     return (
       <form
         className="ui form error" // we added "error" im className because without it, if we have a error inside our form it'll hide
