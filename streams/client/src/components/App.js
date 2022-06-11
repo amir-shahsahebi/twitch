@@ -9,9 +9,9 @@ import StreamEdit from "./streams/StreamEdit";
 import StreamShow from "./streams/StreamShow";
 import StreamList from "./streams/StreamList";
 // import history from "../history";
-import history from "history/browser";
+// import history from "history/browser";
 const App = () => {
-  console.log(history);
+  // console.log(history);
   return (
     <div className="ui container">
       {/* <GoogleOAuthProvider clientId="7835632785-unq4m2g4v7fc4ml0lau7pnjlt6m0qb4j.apps.googleusercontent.com"> */}
@@ -21,7 +21,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<StreamList />} />
           <Route path="/streams/new" element={<StreamCreate />} />
-          <Route path="/streams/edit" element={<StreamEdit />} />
+          <Route path="/streams/edit/:id" element={<StreamEdit />} />
           <Route path="/streams/delete" element={<StreamDelete />} />
           <Route path="/streams/show" element={<StreamShow />} />
         </Routes>
