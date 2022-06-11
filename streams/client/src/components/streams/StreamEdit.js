@@ -18,6 +18,11 @@ const StreamEdit = ({ fetchStream, streams, editStream }) => {
     // console.log(currentStream.id, formValues);
     editStream(currentStream.id, formValues);
   };
+
+  if (!currentStream) {
+    return <div>Loading ...</div>;
+  }
+
   return (
     <div>
       <h3>Edit a Stream</h3>
